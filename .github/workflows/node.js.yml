@@ -28,9 +28,9 @@ jobs:
     - run: npm install 
     - run: npm run build
     - run: npm test
-    - uses: actions/downloads-artifact@v1
+    - uses: actions/downloads-artifact@v3
     - name: Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
       with: 
-        name: my-artifacts
+        name: artifacts
         path: .next/*
