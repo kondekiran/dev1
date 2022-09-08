@@ -19,7 +19,7 @@ build:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
       with:
