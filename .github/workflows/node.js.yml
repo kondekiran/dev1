@@ -18,17 +18,19 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/download-artifact@v3
+      uses: actions/setup-node@v3
+      
       with:
          node-version: ${{ matrix.node-version }}
          cache: 'npm'
     - run: npm install 
     - run: npm run build
     - run: npm test
+    - uses: actions/downloads-artifact@v3
     - name: Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
       with: 
-        name: artifacts
-        path: .dist/*
+        name: my-artifacts
+        path: .next/*
