@@ -31,6 +31,7 @@ jobs:
     - name: Upload Artifact GitHub Action
       uses: actions/upload-artifact@v2
       with: 
-        name: my-artifacts
-        path: .bin*/
+        name: artifacts
+        path: dist
+        
         
