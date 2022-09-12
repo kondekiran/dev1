@@ -32,6 +32,6 @@ jobs:
       uses: actions/upload-artifact@v2
       with: 
         name: artifacts
-        path: dev1
+        path: node_modules
         
         
