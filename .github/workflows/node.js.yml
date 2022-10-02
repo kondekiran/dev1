@@ -33,5 +33,15 @@ jobs:
       with: 
         name: artifacts
         path: node_modules
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v20
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: react
+        environment_name: http://react-env.eba-euhvag7q.us-east-1.elasticbeanstalk.com
+        version_label: 16
+        region: us-east-1
+        deployment_package: artifacts.zip
         
         
