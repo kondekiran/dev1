@@ -44,7 +44,7 @@ jobs:
         with:
          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-         application_name: react
+         application_name: React
          environment_name: http://react-env.eba-euhvag7q.us-east-1.elasticbeanstalk.com
          version_label: 16
          region: us-east-1
