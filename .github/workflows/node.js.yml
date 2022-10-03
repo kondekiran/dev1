@@ -18,30 +18,33 @@ jobs:
         node-version: [16.x]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: setup node
-      uses: actions/download-artifact@v3
-      with:
+      - uses: actions/checkout@v2
+      - name: Configure AWS credentials 
+        uses: aws-actions/configure-aws-credentials@v1
+      - uses: actions/checkout@v3
+      - name: setup node
+        uses: actions/download-artifact@v3
+        with:
          node-version: ${{ matrix.node-version }}
          cache: 'npm'
-    - run: npm install 
-    - run: npm ci
-    - run: npm run build
-    - run: npm test
-    - name: Upload Artifact GitHub Action
-      uses: actions/upload-artifact@v2
-      with: 
-        name: artifacts
-        path: node_modules
-    - name: Deploy to EB
-      uses: dev1/beanstalk-deploy@v2
-      with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: react
-        environment_name: http://react-env.eba-euhvag7q.us-east-1.elasticbeanstalk.com
-        version_label: 16
-        region: us-east-1
-        deployment_package: artifacts.zip
+      - run: npm install 
+      - run: npm ci
+      - run: npm run build
+      - run: npm test
+      - name: Upload Artifact GitHub Action
+        uses: actions/upload-artifact@v2
+        with: 
+         name: artifacts
+         path: node_modules
+      - name: Deploy to EB
+        uses: dev1/beanstalk-deploy@v2
+        with:
+         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+         application_name: react
+         environment_name: http://react-env.eba-euhvag7q.us-east-1.elasticbeanstalk.com
+         version_label: 16
+         region: us-east-1
+         deployment_package: artifacts.zip
         
         
