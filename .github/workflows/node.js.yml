@@ -6,7 +6,7 @@ env:
    EB_PACKAGE_S3_BUCKET_NAME :  "react-env1"
    EB_ENVIROMENT_NAME        :  "react-env"
    EB_APPLICATION_NAME       :  "react"
-   AWS_REGION_NAME           :  "us-east-1"
+   AWS_REGION_NAME           :  "US East (N. Virginia) us-east-1"
 on:
   push:
     branches: [ "main" ]
@@ -42,9 +42,9 @@ jobs:
       - name: Configure my AWS Credentils
         uses: aws-actions/configure-aws-credentials@v1
         with:
-             aws-access-key-id    : ${{ secrets.AWS_ACCESS_KEY }}
-             aws-secret-access-key: ${{ secrets.AWS_SECRET_KEY }}
-             aws-region           : ${{ env.AWS_REGION_NAME }}
+             aws-access-key-id    : ${{ AKIA3BU7RXA7FBHWK5O5 }}
+             aws-secret-access-key: ${{ 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 }}
+             aws-region           : ${{ US East (N. Virginia) us-east-1 }}
       - name: Copy our Deployment package to S3 bucket
         run : aws s3 cp ${{ env.EB_PACKAGE_S3_BUCKET_NAME}}/
       - name: Configure my AWS Credentils
