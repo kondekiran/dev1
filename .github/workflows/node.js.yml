@@ -6,7 +6,7 @@ env:
    EB_PACKAGE_S3_BUCKET_NAME :  "react-env1"
    EB_ENVIROMENT_NAME        :  "react-env"
    EB_APPLICATION_NAME       :  "react"
-   AWS_REGION_NAME           :  "US East (N. Virginia) us-east-1"
+   AWS_REGION_NAME           :  "us-east-1"
 on:
   push:
     branches: [ "main" ]
@@ -22,9 +22,9 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: setup node
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v2
         with:
          node-version: ${{ matrix.node-version }}
          cache: 'npm'
@@ -33,7 +33,7 @@ jobs:
       - run: npm run build
       - run: npm test
       - name: Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with: 
          name: artifacts
          path: node_modules
