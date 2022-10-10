@@ -33,7 +33,7 @@ jobs:
       - run: npm run build
       - run: npm test
       - name: Upload Artifact GitHub Action
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with: 
          name: artifacts
          path: node_modules
